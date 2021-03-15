@@ -40,4 +40,7 @@ Route::prefix('admin')->group(function () {
     Route::get('home', function () {
         return view('admin.home');
     });
+    Route::get('category', function () {
+        return view('admin.category');
+    });
 });

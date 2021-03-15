@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- overlayScrollbars - Sidebar -->
     <link rel="stylesheet" href="{{ asset('adminlte-v3') }}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- jsGrid -->
+    <link rel="stylesheet" href="{{ asset('adminlte-v3') }}/plugins/jsgrid/jsgrid.min.css">
+    <link rel="stylesheet" href="{{ asset('adminlte-v3') }}/plugins/jsgrid/jsgrid-theme.min.css">
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="{{ asset('adminlte-v3') }}/plugins/sweetalert2/sweetalert2.min.css">
     <!-- Toastr -->
@@ -91,6 +94,9 @@
 <script src="{{ asset('adminlte-v3') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- overlayScrollbars - Sidebar -->
 <script src="{{ asset('adminlte-v3') }}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- jsGrid -->
+<script src="{{ asset('adminlte-v3') }}/plugins/jsgrid/demos/db.js"></script>
+<script src="{{ asset('adminlte-v3') }}/plugins/jsgrid/jsgrid.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('adminlte-v3') }}/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
