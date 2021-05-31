@@ -1,5 +1,7 @@
 <?php
 
+
+
 return [
 
     /*
@@ -46,6 +48,19 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        /**
+         * Tạo guard để xác thực
+         * driver: cách xác thực bằng session hoặc token
+         * provider: chọn đến providers ở dưới
+         */
+        'student' => [
+            'driver' => 'session',
+            'provider' => 'students',
+        ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'administrators',
+        ],
     ],
 
     /*
@@ -66,9 +81,14 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'students' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Student::class,
+        ],
+        // dẫn đến model để truy xuất dữ liệu
+        'administrators' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
         ],
 
         // 'users' => [
@@ -98,6 +118,16 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
+        ],
+        'students' => [
+            'provider' => 'students',
+            'table' => 'password_resets',
+            'expiry' => 60
+        ],
+        'administrators' => [
+            'provider' => 'administrators',
+            'table' => 'password_resets',
+            'expiry' => 60
         ],
     ],
 

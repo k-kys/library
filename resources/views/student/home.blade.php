@@ -8,16 +8,8 @@
 
 @push('js')
 <script>
-    $(document).ready(function() {
-        $('#list').click(function(event){
-            event.preventDefault();
-            $('#products .item').addClass('list-group-item');
-        });
-        $('#grid').click(function(event){
-            event.preventDefault();
-            $('#products .item').removeClass('list-group-item');
-            $('#products.item').addClass('grid-group-item');
-        });
+    $(function(){
+    $('#home').addClass('active');
     });
 </script>
 @endpush
@@ -28,24 +20,24 @@
     <!-- Widgets -->
     {{-- https://www.bootdey.com/snippets/view/bs4-card-widget --}}
     <div class="row justify-content-center">
-        <div class="col-md-10 ">
+        <div class="col-md-12 ">
             <div class="row ">
-                <div class="col-xl-3 col-lg-6">
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                     <div class="card l-bg-cherry">
                         <div class="card-statistic-3 p-4">
                             <div class="card-icon card-icon-large"><i class="fas fa-shopping-cart"></i></div>
                             <div class="mb-4">
-                                <h5 class="card-title mb-0">New Orders</h5>
+                                <h5 class="card-title mb-0">Tổng sách mượn</h5>
                             </div>
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
                                     <h2 class="d-flex align-items-center mb-0">
-                                        3,243
+                                        {{ $totalBook }}
                                     </h2>
                                 </div>
-                                <div class="col-4 text-right">
+                                {{-- <div class="col-4 text-right">
                                     <span>12.5% <i class="fa fa-arrow-up"></i></span>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="progress mt-1 " data-height="8" style="height: 8px;">
                                 <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%"
@@ -54,22 +46,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-6">
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                     <div class="card l-bg-blue-dark">
                         <div class="card-statistic-3 p-4">
                             <div class="card-icon card-icon-large"><i class="fas fa-users"></i></div>
                             <div class="mb-4">
-                                <h5 class="card-title mb-0">Customers</h5>
+                                <h5 class="card-title mb-0">Sách đã trả</h5>
                             </div>
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
                                     <h2 class="d-flex align-items-center mb-0">
-                                        15.07k
+                                        {{ $paidBook }}
                                     </h2>
                                 </div>
-                                <div class="col-4 text-right">
+                                {{-- <div class="col-4 text-right">
                                     <span>9.23% <i class="fa fa-arrow-up"></i></span>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="progress mt-1 " data-height="8" style="height: 8px;">
                                 <div class="progress-bar l-bg-green" role="progressbar" data-width="25%"
@@ -78,22 +70,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-6">
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                     <div class="card l-bg-green-dark">
                         <div class="card-statistic-3 p-4">
                             <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
                             <div class="mb-4">
-                                <h5 class="card-title mb-0">Ticket Resolved</h5>
+                                <h5 class="card-title mb-0">Sách đang mượn</h5>
                             </div>
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
                                     <h2 class="d-flex align-items-center mb-0">
-                                        578
+                                        {{ $unpaidBook }}
                                     </h2>
                                 </div>
-                                <div class="col-4 text-right">
+                                {{-- <div class="col-4 text-right">
                                     <span>10% <i class="fa fa-arrow-up"></i></span>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="progress mt-1 " data-height="8" style="height: 8px;">
                                 <div class="progress-bar l-bg-orange" role="progressbar" data-width="25%"
@@ -102,22 +94,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-6">
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                     <div class="card l-bg-orange-dark">
                         <div class="card-statistic-3 p-4">
                             <div class="card-icon card-icon-large"><i class="fas fa-dollar-sign"></i></div>
                             <div class="mb-4">
-                                <h5 class="card-title mb-0">Revenue Today</h5>
+                                <h5 class="card-title mb-0">Số lần phạt</h5>
                             </div>
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
                                     <h2 class="d-flex align-items-center mb-0">
-                                        $11.61k
+                                        {{ $numberOfPenalties }}
                                     </h2>
                                 </div>
-                                <div class="col-4 text-right">
+                                {{-- <div class="col-4 text-right">
                                     <span>2.5% <i class="fa fa-arrow-up"></i></span>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="progress mt-1 " data-height="8" style="height: 8px;">
                                 <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%"
@@ -135,168 +127,70 @@
         <div class="col">
             <div class="search">
                 <div class="form-group has-search">
-                    <span class="fa fa-search form-control-feedback"></span>
-                    <input type="text" class="form-control" placeholder="Search">
+                    <form>
+                        <span class="fa fa-search form-control-feedback"></span>
+                        <input type="text" class="form-control" name="keyword" placeholder="Tên sách..."
+                            value="{{ request()->keyword }}">
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Grid View -->
-    {{-- https://bootsnipp.com/snippets/M515A --}}
+    <!-- Page Heading -->
     <div class="row">
-        <div class="col-lg-12 my-3">
-            <div class="pull-right">
-                <div class="btn-group">
-                    <button class="btn btn-info" id="list">
-                        List View
-                    </button>
-                    <button class="btn btn-danger" id="grid">
-                        Grid View
-                    </button>
+        @foreach ($books as $book)
+        <div class="col-lg-3 mb-4">
+            <div class="card h-100 card-book">
+
+                @if ($book->stock_amount == 0)
+                <a href="{{ route('book_detail', ['book_id' => $book->id]) }}">
+                    <img class="card-img-top img-book-disable" src="{{ asset($book->image) }}" alt=""
+                        onError="this.onerror=null;this.src='{{ url("/img/400x250.png") }}';">
+                </a>
+                <span class="book-label">Hết</span>
+                @else
+                <a href="{{ route('book_detail', ['book_id' => $book->id]) }}">
+                    <img class="card-img-top img-book" src="{{ asset($book->image) }}" alt=""
+                        onError="this.onerror=null;this.src='{{ url("/img/400x250.png") }}';">
+                </a>
+                @endif
+
+                <div class="card-body">
+                    <div class="card-title ">
+                        <h5 class="text-one-line text-center" style="font-family: Lobster;">
+                            <a href="{{ route('book_detail', ['book_id' => $book->id]) }}" class="text-decoration-none">
+                                {{ $book->name }}
+                            </a>
+                        </h5>
+                    </div>
+                    {{-- <p class="card-text text-two-line">{{ $book->description }}</p> --}}
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12">
+                            <p style="opacity: 0.3">
+                                Còn {{ ($book->stock_amount)?($book->stock_amount):'0' }} quyển
+                            </p>
+                        </div>
+                        {{-- <div class="col-xs-12 col-md-6"> --}}
+                        {{-- <a class="btn btn-sm btn-success float-right"
+                                href="{{ route('check_order', ['book_id' => $book->id]) }}">
+                        <i class="fa fa-cart-plus" aria-hidden="true"></i>&nbsp;
+                        Đặt mượn</a> --}}
+                        {{-- <p class="float-right" style="opacity: 0.6">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                ... lượt mượn
+                            </p> --}}
+                        {{-- </div> --}}
+                    </div>
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
-    <div id="products" class="row view-group">
-        <div class="item col-xs-4 col-lg-4">
-            <div class="thumbnail card">
-                <div class="img-event">
-                    <img class="group list-group-image img-fluid" src="http://placehold.it/400x250/000/fff" alt="" />
-                </div>
-                <div class="caption card-body">
-                    <h4 class="group card-title inner list-group-item-heading">
-                        Product title</h4>
-                    <p class="group inner list-group-item-text">
-                        Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-6">
-                            <p class="lead">
-                                $21.000</p>
-                        </div>
-                        <div class="col-xs-12 col-md-6">
-                            <a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item col-xs-4 col-lg-4">
-            <div class="thumbnail card">
-                <div class="img-event">
-                    <img class="group list-group-image img-fluid" src="http://placehold.it/400x250/000/fff" alt="" />
-                </div>
-                <div class="caption card-body">
-                    <h4 class="group card-title inner list-group-item-heading">
-                        Product title</h4>
-                    <p class="group inner list-group-item-text">
-                        Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-6">
-                            <p class="lead">
-                                $21.000</p>
-                        </div>
-                        <div class="col-xs-12 col-md-6">
-                            <a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item col-xs-4 col-lg-4">
-            <div class="thumbnail card">
-                <div class="img-event">
-                    <img class="group list-group-image img-fluid" src="http://placehold.it/400x250/000/fff" alt="" />
-                </div>
-                <div class="caption card-body">
-                    <h4 class="group card-title inner list-group-item-heading">
-                        Product title</h4>
-                    <p class="group inner list-group-item-text">
-                        Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-6">
-                            <p class="lead">
-                                $21.000</p>
-                        </div>
-                        <div class="col-xs-12 col-md-6">
-                            <a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item col-xs-4 col-lg-4">
-            <div class="thumbnail card">
-                <div class="img-event">
-                    <img class="group list-group-image img-fluid" src="http://placehold.it/400x250/000/fff" alt="" />
-                </div>
-                <div class="caption card-body">
-                    <h4 class="group card-title inner list-group-item-heading">
-                        Product title</h4>
-                    <p class="group inner list-group-item-text">
-                        Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-6">
-                            <p class="lead">
-                                $21.000</p>
-                        </div>
-                        <div class="col-xs-12 col-md-6">
-                            <a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item col-xs-4 col-lg-4">
-            <div class="thumbnail card">
-                <div class="img-event">
-                    <img class="group list-group-image img-fluid" src="http://placehold.it/400x250/000/fff" alt="" />
-                </div>
-                <div class="caption card-body">
-                    <h4 class="group card-title inner list-group-item-heading">
-                        Product title</h4>
-                    <p class="group inner list-group-item-text">
-                        Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-6">
-                            <p class="lead">
-                                $21.000</p>
-                        </div>
-                        <div class="col-xs-12 col-md-6">
-                            <a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item col-xs-4 col-lg-4">
-            <div class="thumbnail card">
-                <div class="img-event">
-                    <img class="group list-group-image img-fluid" src="http://placehold.it/400x250/000/fff" alt="" />
-                </div>
-                <div class="caption card-body">
-                    <h4 class="group card-title inner list-group-item-heading">
-                        Product title</h4>
-                    <p class="group inner list-group-item-text">
-                        Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-6">
-                            <p class="lead">
-                                $21.000</p>
-                        </div>
-                        <div class="col-xs-12 col-md-6">
-                            <a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- /.row -->
+
+    <div class="pagination m-0 justify-content-center">
+        {{ $books->links() }}
     </div>
 </div>
 @endsection

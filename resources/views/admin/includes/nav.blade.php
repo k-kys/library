@@ -6,7 +6,7 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="../../index3.html" class="nav-link">Trang chủ</a>
+            <a href="{{ url('admin/dashboard') }}" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Liên hệ</a>
@@ -27,7 +27,7 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-        <!-- Messages Dropdown Menu -->
+        {{-- <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-comments"></i>
@@ -119,36 +119,31 @@
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
                 <i class="fas fa-th-large"></i>
             </a>
-        </li>
-
+        </li> --}}
+        @php
+        $user = Auth::guard('admin')->user();
+        @endphp
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
-
-                <!-- Sidebar user (optional) -->
-                {{-- <div class="user-panel d-flex">
-                    <div class="image">
-                        <img src="{{ asset('adminlte-v3') }}/dist/img/user2-160x160.jpg" class="img-circle elevation-2"
-                alt="User Image">
-                </div>
-                <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
-                </div>
-                </div> --}}
-
                 <div>
-                    <img src="{{ asset('adminlte-v3') }}/dist/img/user2-160x160.jpg"
-                        style="width: 40px; margin-top: -8px;" class="img-circle elevation-2" alt="User Image">
-                    <i class="p-1">Alexander Pierce</i>
+                    <img src="{{ asset('') }}avatar/resize/thumbnail{{ $user->image }}"
+                        style="width: 40px; height: 40px; margin-top: -8px;" class="img-circle elevation-2"
+                        alt="User Image"
+                        onError="this.onerror=null;this.src='{{ url("/img/blank-profile-picture-215x215.png") }}';">
+                    <i class="p-1">{{ $user->name }}</i>
                 </div>
-
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <a href="{{ url('/home') }}" class="dropdown-item">
+                <a href="{{ route('admin.profile') }}" class="dropdown-item">
+                    Thông tin cá nhân
+                </a>
+                <a href="{{ route('admin.change_password') }}" class="dropdown-item">
+                    Đổi mật khẩu
+                </a>
+                <a href="{{ route('logout') }}" class="dropdown-item">
                     Đăng xuất
                 </a>
             </div>
-
-
         </li>
     </ul>
 </nav>

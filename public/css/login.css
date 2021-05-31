@@ -29,6 +29,12 @@ h2 {
 
 /* STRUCTURE */
 
+.img-background {
+    min-height: 60vh;
+    position: relative;
+    background: url("../img/background.jpg") center / cover;
+}
+
 .wrapper {
     display: flex;
     align-items: center;

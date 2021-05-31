@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Ho_Chi_Minh',
 
     /*
     |--------------------------------------------------------------------------
@@ -165,6 +165,18 @@ return [
         /*
          * Package Service Providers...
          */
+        // Đăng ký Spatie - phần quyền
+        Spatie\Permission\PermissionServiceProvider::class,
+        // Đăng ký SweetAlert2
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        // Unisharp upload file
+        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+        // Laroute : viết route() laravel trong JS
+        // Lord\Laroute\LarouteServiceProvider::class,
+        // Resize ảnh
+        // Intervention\Image\ImageServiceProvider::class,
+
 
         /*
          * Application Service Providers...
@@ -226,6 +238,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        // Khai báo alias cho SweetAlert
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+        // Unisharp, Intervention Image
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

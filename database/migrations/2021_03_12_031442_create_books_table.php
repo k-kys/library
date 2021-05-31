@@ -15,12 +15,16 @@ class CreateBooksTable extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('isbn')->nullable();
+            $table->string('isbn')->nullable();
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->string('author')->nullable();
+            $table->text('description')->nullable();
             $table->float('price')->nullable();
-            $table->integer('amount');
-            $table->integer('remaining_amount');
+            $table->integer('amount')->nullable();
+            $table->integer('stock_amount')->nullable();
+            $table->integer('times_borrow')->default(0);
+            $table->string('image')->nullable();
+            $table->softDeletes(); // cột deleted_at
             $table->timestamps();
         });
     }

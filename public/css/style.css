@@ -1,0 +1,15 @@
+.img-bg-header {
+    background: url("/img/bg_header.png");
+    width: 100%;
+}
+
+.img-header {
+    max-width: 100%;
+    align-self: center;
+}
+
+.footer {
+    padding-top: 10px;
+    background-color: #1e73be;
+    color: #eaeaea;
+}
