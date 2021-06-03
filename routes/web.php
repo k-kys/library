@@ -64,6 +64,40 @@ Route::get('test', function () {
     echo '</table>';
 });
 
+Route::get('test2', function () {
+    $book = Book::where('id', 1)->first()->categories()->get();
+    echo '<table border="1" cellspacing=0>';
+    echo '<tr>
+            <th>ID sách</th>
+            <th>ISBN</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Amount</th>
+            <th>Stock amount</th>
+            <th>Image</th>
+            <th>Created</th>
+            <th>Updated</th>
+        <tr/>';
+    foreach ($book as $item) {
+        echo '<tr>
+        <td>' . $item->id . '</td>
+        <td>' . $item->isbn . '</td>
+        <td>' . $item->name . '</td>
+        <td>' . $item->description . '</td>
+        <td>' . $item->price . '</td>
+        <td>' . $item->amount . '</td>
+        <td>' . $item->stock_amount . '</td>
+        <td>' . $item->image . '</td>
+        <td>' . $item->created_at . '</td>
+        <td>' . $item->updated_at . '</td>
+        </tr>';
+    }
+    echo '</table>';
+});
+
+// ? ----------------------------------------------
+
 Route::get('/', [LoginController::class, 'checkLogin']);
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {
@@ -92,6 +126,8 @@ Route::get('/forgot-password', function () {
 // Student
 Route::group(['prefix' => '/', 'middleware' => 'auth:student'], function () {
     Route::get('home', [StudentController::class, 'home'])->name('home');
+
+    // Route::post('search_book', [])
     Route::get('borrow_pay', [BookOutOnLoanController::class, 'studentBorrowPay'])->name('borrow_pay');
     Route::get('order', [OrderController::class, 'order'])->name('order');
     Route::get('profile', [StudentController::class, 'profile'])->name('profile');

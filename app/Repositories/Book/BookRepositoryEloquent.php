@@ -29,6 +29,7 @@ class BookRepositoryEloquent extends RepositoryEloquent implements BookRepositor
         return Major::all();
     }
 
+    // * ADMIN
     public function index($keyword)
     {
         if ($keyword) {

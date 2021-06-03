@@ -12,6 +12,7 @@ interface StudentRepositoryInterface extends RepositoryInterface
     public function getPaidBook($id);
     public function getUnpaidBook($id);
     public function getNumberOfPenalties($id);
+    public function getAllBook();
     public function home($keyword);
     public function profile($id);
     public function updateProfile($id, $request);

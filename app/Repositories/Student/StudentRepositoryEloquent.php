@@ -55,6 +55,11 @@ class StudentRepositoryEloquent extends RepositoryEloquent implements StudentRep
         ])->count();
     }
 
+    public function getAllBook()
+    {
+        return Book::orderByDesc('id');
+    }
+
     public function home($keyword)
     {
         $query = Book::query();
