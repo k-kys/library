@@ -19,6 +19,7 @@ class BookController extends Controller
     }
 
     // STUDENT
+
     public function show($id)
     {
         $book  = $this->bookRepository->show($id);
