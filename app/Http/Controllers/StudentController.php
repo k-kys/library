@@ -33,16 +33,27 @@ class StudentController extends Controller
         $unpaidBook = $this->studentRepository->getUnpaidBook($id);
         $numberOfPenalties = $this->studentRepository->getNumberOfPenalties($id);
 
-        return view('student.home', compact('books', 'totalBook', 'paidBook', 'unpaidBook', 'numberOfPenalties'));
+        $categories = $this->studentRepository->getCategories();
+
+        return view('student.home', compact('books', 'totalBook', 'paidBook', 'unpaidBook', 'numberOfPenalties', 'categories'));
     }
 
-    // public function getBookSearch(Request $request)
-    // {
-    //     $book  = Book::query();
-    //     if ($request->has('filterCategory')) {
-    //         $book->where('')
-    //     }
-    // }
+    public function getBookSearch(Request $request)
+    {
+        // dd($request->keyword, $request->filter_category);
+        $keyword = $request->keyword;
+        $category = $request->filter_category;
+        $book  = Book::query();
+        if ($keyword) {
+            $book->where('name', 'like', '%' . "{$keyword}" . '%');
+        }
+        if ($category) {
+            $book->first()->categories()->where('id', $category);
+        }
+        $books = $book->get();
+        // dd($books);
+        return view('student.home', compact('books'));
+    }
 
     public function profile()
     {

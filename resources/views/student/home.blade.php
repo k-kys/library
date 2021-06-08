@@ -127,10 +127,19 @@
         <div class="col">
             <div class="search">
                 <div class="form-group has-search">
-                    <form>
+                    <form action="{{ route('search_book') }}" method="GET">
                         <span class="fa fa-search form-control-feedback"></span>
                         <input type="text" class="form-control" name="keyword" placeholder="Tên sách..."
                             value="{{ request()->keyword }}">
+                        <select name="filter_category" id="" class="select2" data-placeholder="Chọn thể loại">
+                            <option value="">--Thể loại--</option>
+                            @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">
+                                {{ $category->name }}
+                            </option>
+                            @endforeach
+                        </select>
+                        <button class="btn btn-sm btn-secondary" type="submit">Search</button>
                     </form>
                 </div>
             </div>

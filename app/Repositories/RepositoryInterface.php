@@ -8,6 +8,7 @@ interface RepositoryInterface
     public function query();
     public function find($id);
     public function search($keyword);
+    public function getCategories();
     public function show($id);
     public function index($keyword);
     public function create(array $attributes);

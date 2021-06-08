@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Category;
 use File;
 use Illuminate\Support\Facades\Schema;
 use Intervention\Image\Facades\Image;
@@ -44,6 +45,10 @@ abstract class RepositoryEloquent implements RepositoryInterface
         return $this->_model->where('name', 'like', "%{$keyword}%")->orderBy('name')->get();
     }
 
+    public function getCategories()
+    {
+        return Category::all();
+    }
 
     public function show($id)
     {
