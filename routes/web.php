@@ -126,12 +126,7 @@ Route::get('/forgot-password', function () {
 // Student
 Route::group(['prefix' => '/', 'middleware' => 'auth:student'], function () {
     Route::get('home', [StudentController::class, 'home'])->name('home');
-<<<<<<< HEAD
     Route::get('search_book', [StudentController::class, 'getBookSearch'])->name('search_book');
-=======
-
-    // Route::post('search_book', [])
->>>>>>> bc387406eda0a0135aa0a1f7e00ce10e0f95ceff
     Route::get('borrow_pay', [BookOutOnLoanController::class, 'studentBorrowPay'])->name('borrow_pay');
     Route::get('order', [OrderController::class, 'order'])->name('order');
     Route::get('profile', [StudentController::class, 'profile'])->name('profile');
