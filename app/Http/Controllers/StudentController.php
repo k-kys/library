@@ -38,7 +38,6 @@ class StudentController extends Controller
         return view('student.home', compact('books', 'totalBook', 'paidBook', 'unpaidBook', 'numberOfPenalties', 'categories'));
     }
 
-<<<<<<< HEAD
     public function getBookSearch(Request $request)
     {
         // dd($request->keyword, $request->filter_category);
@@ -55,16 +54,6 @@ class StudentController extends Controller
         // dd($books);
         return view('student.home', compact('books'));
     }
-=======
-    // public function getBookSearch(Request $request)
-    // {
-    //     $book  = Book::query();
-    //     if ($request->has('filterCategory')) {
-    //         $book->where('');
-    //     }
-    // }
->>>>>>> bc387406eda0a0135aa0a1f7e00ce10e0f95ceff
-
     public function profile()
     {
         $profile = $this->studentRepository->profile($this->id());
